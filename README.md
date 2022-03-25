@@ -8,7 +8,8 @@ Cloud when your organization restricts public IP address access.
 
 Options for GUI access to be examined:
 
-1. gcloud with SSH tunneling
+1. gcloud with SSH tunneling - local host
+1. gcloud with SSH tunneling - remote host
 1. gcloud to enable SOCKS proxied access - TODO
 1. IAP for Windows - TODO
 
@@ -62,18 +63,15 @@ Apply the updates:
 terraform apply
 ```
 
-TODO
-
-sudo apt update
-sudo apt install -y apache2
-
 ## Test Steps
 
-1. gcloud with SSH tunneling
+1. gcloud with SSH tunneling - local host
+
+![gcloud ssh tunnel trial - single VM](images/gcloud-ssh-tunnel-trial-single-vm.png)
 
 ```bash
 # workstation host
-gcloud compute ssh bastion-instance -- -NL 30080:localhost:80
+gcloud compute ssh tunnel-instance -- -NL 30080:localhost:80
 ```
 
 ```bash
@@ -82,6 +80,30 @@ curl -s localhost:30080 | head
 ```
 
 (in the browser)  localhost:30080
+
+1. gcloud with SSH tunneling - remote host
+
+![gcloud ssh tunnel trial - 2 VMs](images/gcloud-ssh-tunnel-trial-two-vms.png)
+
+```bash
+# workstation host
+gcloud compute ssh tunnel-instance -- -NL 30080:backend-instance:80
+```
+
+```bash
+# test
+curl -s localhost:30080 | head
+```
+
+(in the browser)  localhost:30080
+
+1. gcloud to enable SOCKS proxied access - TODO
+
+TODO
+
+1. IAP for Windows - TODO
+
+TODO
 
 ## Clean Up
 
@@ -92,4 +114,3 @@ terraform destroy
 ## TODOs
 
 * Consider adding the infrastructure build to the deployment pipeline.
-
