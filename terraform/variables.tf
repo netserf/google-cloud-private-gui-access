@@ -1,11 +1,7 @@
-variable "project_name" {
-  default = "private gui access demo project"
+variable "network_name" {
+  default = "csp-vpc1"
 }
 
-variable "project_id" {
-  default = "google-cloud-private-gui-access-demo"
-}
-
-variable "billing_account_name" {
-  default = "my-billing-account"
+variable "subnetwork_name" {
+  default = "csp-vpc1-subnet"
 }
