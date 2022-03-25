@@ -65,43 +65,66 @@ terraform apply
 
 ## Test Steps
 
-1. gcloud with SSH tunneling - local host
+### 1. gcloud with SSH tunneling - local host
 
-![gcloud ssh tunnel trial - single VM](images/gcloud-ssh-tunnel-trial-single-vm.png)
+![gcloud ssh tunnel trial - single VM](images/gcloud-tunnel-trials-ssh-with-one-vm.png)
 
 ```bash
-# workstation host
+# build tunnel on workstation host
 gcloud compute ssh tunnel-instance -- -NL 30080:localhost:80
 ```
 
 ```bash
-# test
-curl -s localhost:30080 | head
+# test from workstation host
+curl -s localhost:30080
 ```
 
-(in the browser)  localhost:30080
+Notes:
 
-1. gcloud with SSH tunneling - remote host
+* To test in your browser, try http://localhost:30080
 
-![gcloud ssh tunnel trial - 2 VMs](images/gcloud-ssh-tunnel-trial-two-vms.png)
+### 2. gcloud with SSH tunneling - remote host
+
+![gcloud ssh tunnel trial - 2 VMs](images/gcloud-tunnel-trials-ssh-with-two-vms.png)
 
 ```bash
-# workstation host
+# build tunnel on workstation host
 gcloud compute ssh tunnel-instance -- -NL 30080:backend-instance:80
 ```
 
 ```bash
-# test
-curl -s localhost:30080 | head
+# test from workstation host
+curl -s localhost:30080
 ```
 
-(in the browser)  localhost:30080
+Notes:
 
-1. gcloud to enable SOCKS proxied access - TODO
+* To test in your browser, try http://localhost:30080
 
-TODO
+### 3. gcloud SOCKS proxy
 
-1. IAP for Windows - TODO
+![gcloud tunnel trials - socks proxy](images/gcloud-tunnel-trials-socks-proxy.png)
+
+```bash
+# build the socks proxy on your workstation host
+gcloud compute ssh tunnel-instance --ssh-flag="-D" \
+    --ssh-flag="30080" --ssh-flag="-N"
+```
+
+```bash
+# test from workstation host
+curl -x socks5h://localhost:30080 http://tunnel-instance
+
+curl -x socks5h://localhost:30080 http://backend-instance
+```
+
+Notes:
+
+* To test in your browser:
+  1) set your browser socks proxy to localhost:30080
+  2) connect your browser to http://localhost:30080
+
+### 4. IAP for Windows - TODO
 
 TODO
 
