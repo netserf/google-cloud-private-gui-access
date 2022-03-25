@@ -3,41 +3,39 @@
 [![Actions Status](https://github.com/netserf/google-cloud-private-gui-access/workflows/Terraform%20Lint/badge.svg)](https://github.com/netserf/google-cloud-private-gui-access/actions)
 [![Actions Status](https://github.com/netserf/google-cloud-private-gui-access/workflows/Docs/badge.svg)](https://github.com/netserf/google-cloud-private-gui-access/actions)
 
-A review of some available options for accessing remote GUIs inside Google
-Cloud when your organization restricts public IP address access.
+A review of options for accessing remote/hidden GUIs inside Google Cloud when
+your organization restricts public IP address access.
 
-Options for GUI access to be examined:
+Options reviewed:
 
 1. gcloud with SSH tunneling - local host
 1. gcloud with SSH tunneling - remote host
-1. gcloud to enable SOCKS proxied access - TODO
+1. gcloud to enable SOCKS proxied access
 1. IAP for Windows - TODO
 
 ## Work Environment
 
 These instructions assume you already have Google Cloud access and you're
-working in the Cloud Shell. From here clone the repo and follow the build steps
-below.
+working in the Cloud Shell. Clone the repo and follow the build steps below.
 
 ```bash
 git clone https://github.com/netserf/google-cloud-private-gui-access.git
 ```
 
-The Terraform infrastructure steps provided will build out GCE instances that
-you can use to test your GUI access. Follow the infrastructure build
-instructions to turn up your test environment, then follow the test steps to
-test your GUI access.
+The Terraform steps provided will build out GCE instances that you can use to
+test GUI access. Follow the infrastructure build instructions to turn up your
+test environment, then follow the test steps to test your GUI access.
 
 Things to Consider:
 
 * If you are inside a private GCP network, then you may need to turn on Cloud
-  NAT to enable egress access to the public Internet for package updates
+  NAT to enable egress access to the Internet for package updates
 
 ## Infrastructure Build
 
 The following are the infrastructure build steps using terraform.
 
-Note - terraform is available in the Cloud Shell.
+Note - terraform is available in Google's Cloud Shell environment.
 
 ```bash
 PROJECT_ID="YOUR_PROJECT_ID"
@@ -121,8 +119,10 @@ curl -x socks5h://localhost:30080 http://backend-instance
 Notes:
 
 * To test in your browser:
-  1) set your browser socks proxy to localhost:30080
-  2) connect your browser to <http://localhost:30080>
+
+  1. set your browser socks proxy to localhost:30080
+  1. connect your browser to <http://tunnel-instance>
+  1. connect your browser to <http://backend-instance>
 
 ### 4. IAP for Windows - TODO
 
@@ -133,7 +133,3 @@ TODO
 ```bash
 terraform destroy
 ```
-
-## TODOs
-
-* Consider adding the infrastructure build to the deployment pipeline.
