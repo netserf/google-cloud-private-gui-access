@@ -9,8 +9,8 @@ Cloud when your organization restricts public IP address access.
 Options for GUI access to be examined:
 
 1. gcloud with SSH tunneling
-2. gcloud to enable SOCKS proxied access - TODO
-3. IAP for Windows - TODO
+1. gcloud to enable SOCKS proxied access - TODO
+1. IAP for Windows - TODO
 
 ## Work Environment
 
@@ -29,7 +29,7 @@ test your GUI access.
 
 Things to Consider:
 
-- If you are inside a private GCP network, then you may need to turn on Cloud
+* If you are inside a private GCP network, then you may need to turn on Cloud
 NAT to enable egress access to the public Internet for package updates
 
 ## Infrastructure Build
@@ -82,7 +82,6 @@ curl -s localhost:30080 | head
 ```
 
 (in the browser)  localhost:30080
-
 
 ## Clean Up
 
