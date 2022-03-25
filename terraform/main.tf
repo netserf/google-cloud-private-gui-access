@@ -23,7 +23,7 @@ resource "google_compute_instance" "jump_instance" {
 
   network_interface {
     # A default network is created for all GCP projects
-    network = var.network_name
+    network    = var.network_name
     subnetwork = var.subnetwork_name
   }
 
@@ -42,7 +42,7 @@ resource "google_compute_instance" "backend_instance" {
 
   network_interface {
     # A default network is created for all GCP projects
-    network = var.network_name
+    network    = var.network_name
     subnetwork = var.subnetwork_name
   }
 
