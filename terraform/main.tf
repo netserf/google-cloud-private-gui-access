@@ -11,8 +11,8 @@ provider "google" {
   // TODO: Add your GCP credentials, if outside Cloud Shell
 }
 
-resource "google_compute_instance" "jump_instance" {
-  name         = "jump-instance"
+resource "google_compute_instance" "tunnel_instance" {
+  name         = "tunnel-instance"
   machine_type = "f1-micro"
 
   boot_disk {
