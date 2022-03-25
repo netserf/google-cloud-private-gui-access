@@ -81,7 +81,7 @@ curl -s localhost:30080
 
 Notes:
 
-* To test in your browser, try http://localhost:30080
+* To test in your browser, try <http://localhost:30080>
 
 ### 2. gcloud with SSH tunneling - remote host
 
@@ -99,7 +99,7 @@ curl -s localhost:30080
 
 Notes:
 
-* To test in your browser, try http://localhost:30080
+* To test in your browser, try <http://localhost:30080>
 
 ### 3. gcloud SOCKS proxy
 
@@ -122,7 +122,7 @@ Notes:
 
 * To test in your browser:
   1) set your browser socks proxy to localhost:30080
-  2) connect your browser to http://localhost:30080
+  2) connect your browser to <http://localhost:30080>
 
 ### 4. IAP for Windows - TODO
 
