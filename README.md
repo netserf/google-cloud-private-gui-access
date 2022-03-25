@@ -30,7 +30,7 @@ test your GUI access.
 Things to Consider:
 
 * If you are inside a private GCP network, then you may need to turn on Cloud
-NAT to enable egress access to the public Internet for package updates
+  NAT to enable egress access to the public Internet for package updates
 
 ## Infrastructure Build
 
@@ -91,4 +91,5 @@ terraform destroy
 
 ## TODOs
 
-- Consider adding the infrastructure build to the deployment pipeline.
+* Consider adding the infrastructure build to the deployment pipeline.
+
