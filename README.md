@@ -15,21 +15,22 @@ Options reviewed:
 
 ## Work Environment
 
-These instructions assume you already have Google Cloud access and you're
-working in the Cloud Shell. Clone the repo and follow the build steps below.
+These instructions assume you have Google Cloud access and you're working in
+Cloud Shell. Clone the repo and follow the build steps below.
 
 ```bash
 git clone https://github.com/netserf/google-cloud-private-gui-access.git
 ```
 
-The Terraform steps provided will build out GCE instances that you can use to
-test GUI access. Follow the infrastructure build instructions to turn up your
-test environment, then follow the test steps to test your GUI access.
+The Terraform steps provided will build GCE instances that you can use to test
+GUI access. Follow the infrastructure build instructions to turn up your test
+environment, then follow the test steps to see if GUI access is working.
 
 Things to Consider:
 
 * If you are inside a private GCP network, then you may need to turn on Cloud
-  NAT to enable egress access to the Internet for package updates
+  NAT to enable egress access to the Internet for package updates. Notes to
+  enable Cloud NAT can be found in the [Reference Documentation](#reference-documentation).
 
 ## Infrastructure Build
 
@@ -62,6 +63,11 @@ terraform apply
 ```
 
 ## Test Steps
+
+These steps assume you're using a workstation on the Internet to access the
+internal GUIs inside Google Cloud. To enable this, you'll need to set up the
+GCP SDK (which includes the gcloud CLI) locally. Installation instructions can
+be found in the [Reference Documentation](#reference-documentation).
 
 ### 1. gcloud with SSH tunneling - local host
 
@@ -133,3 +139,9 @@ TODO
 ```bash
 terraform destroy
 ```
+
+## Reference Documentation
+
+* [Google Cloud - Securely connecting to VM instances](https://cloud.google.com/solutions/connecting-securely)
+* [Google Cloud - Set up and manage network address translation with Cloud NAT](https://cloud.google.com/nat/docs/set-up-manage-network-address-translation)
+* [Google Cloud - Installing the gcloud CLI](https://cloud.google.com/sdk/docs/install)
