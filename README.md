@@ -44,6 +44,10 @@ gcloud config set project ${PROJECT_ID}
 cd terraform
 ```
 
+Update the `network_name` and `subnetwork_name` variables in the
+`variables.tf` file to match your environment or override them with
+`terraform apply -var-file=my_variables.tf`.
+
 Pull the providers:
 
 ```bash
